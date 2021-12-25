@@ -32,7 +32,7 @@ public class LocalNewAndroidTests extends TestBase {
     }
 
     @Test
-    @Tag("selenide_android")
+    @Tag("tests_android")
     void changeLanguageTest() {
 
         step("Type search", () -> {
@@ -60,7 +60,7 @@ public class LocalNewAndroidTests extends TestBase {
     }
 
     @Test
-    @Tag("selenide_android")
+    @Tag("tests_android")
     void gettingStartedFirstPage() {
         step("Check text on first page", () -> {
             $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView"))
@@ -72,7 +72,7 @@ public class LocalNewAndroidTests extends TestBase {
     }
 
     @Test
-    @Tag("selenide_android")
+    @Tag("tests_android")
     void gettingStartedSecondPage() {
         step("Open second page", () ->
 

@@ -13,7 +13,7 @@ public class BrowserStackNewAndroidTests extends TestBase {
 
 
     @Test
-    @Tag("browserstack_android")
+    @Tag("tests_browserstack")
     void searchTest() {
 
         step("Type search", () -> {
@@ -31,7 +31,7 @@ public class BrowserStackNewAndroidTests extends TestBase {
     }
 
     @Test
-    @Tag("browserstack_android")
+    @Tag("tests_browserstack")
     void changeLanguageTest() {
 
         step("Type search", () -> {
