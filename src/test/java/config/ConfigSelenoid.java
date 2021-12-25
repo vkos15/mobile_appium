@@ -1,5 +1,6 @@
 package config;
 
+
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
@@ -8,12 +9,11 @@ import org.aeonbits.owner.Config;
         "classpath:config/${environment}.properties"
 })
 
-public interface ConfigBrowserStack extends Config {
-
-    String user();
-
-    String key();
+public interface ConfigSelenoid extends Config {
 
     String url();
 
+    String deviceName();
+
+    String version();
 }

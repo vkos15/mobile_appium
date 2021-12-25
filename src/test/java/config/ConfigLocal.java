@@ -8,12 +8,10 @@ import org.aeonbits.owner.Config;
         "classpath:config/${environment}.properties"
 })
 
-public interface ConfigBrowserStack extends Config {
+public interface ConfigLocal extends Config {
+    String deviceName();
 
-    String user();
-
-    String key();
+    String version();
 
     String url();
-
 }

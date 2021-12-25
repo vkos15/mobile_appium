@@ -7,13 +7,8 @@ import org.aeonbits.owner.Config;
         "system:properties",
         "classpath:config/${environment}.properties"
 })
+public interface ConfigEmulator extends Config {
+    String deviceName();
 
-public interface ConfigBrowserStack extends Config {
-
-    String user();
-
-    String key();
-
-    String url();
-
+    String version();
 }

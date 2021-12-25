@@ -1,6 +1,7 @@
-package tests.browserstack;
+package tests;
 
 import io.appium.java_client.MobileBy;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -8,10 +9,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static io.qameta.allure.Allure.step;
 
-public class BrowserStackNewAndroidTests extends TestBaseBrowserStack {
+public class BrowserStackNewAndroidTests extends TestBase {
 
 
     @Test
+    @Tag("browserstack_android")
     void searchTest() {
 
         step("Type search", () -> {
@@ -29,6 +31,7 @@ public class BrowserStackNewAndroidTests extends TestBaseBrowserStack {
     }
 
     @Test
+    @Tag("browserstack_android")
     void changeLanguageTest() {
 
         step("Type search", () -> {

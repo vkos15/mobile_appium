@@ -43,7 +43,7 @@ tasks.withType(JavaCompile) {
 tasks.withType(Test) {
     systemProperties(System.getProperties())
     useJUnitPlatform()
-
+    systemProperty("environment",System.getProperty("environment", "emulator"))
     testLogging {
         lifecycle {
 //            events "started", "failed"
@@ -57,11 +57,12 @@ task selenide_android(type: Test) {
     useJUnitPlatform {
         includeTags 'selenide_android'
     }
+   // systemProperty "environment", "selenoid"
 }
 
 task browserstack_android(type: Test) {
     useJUnitPlatform {
-        includeTags 'selenide_android'
+        includeTags 'browserstack_android'
     }
-    systemProperty "deviceFarm", "browserstack"
+
 }

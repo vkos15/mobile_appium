@@ -1,7 +1,10 @@
-package tests.browserstack;
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import drivers.BrowserstackMobileDriver;
+import drivers.EmulatorMobileDriver;
+import drivers.LocalMobileDriver;
+import drivers.SelenoidMobileDriver;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -14,14 +17,26 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 import static helpers.Attach.getSessionId;
 
 
-public class TestBaseBrowserStack {
+public class TestBase {
+
     @BeforeAll
     public static void setUp() {
         addListener("AllureSelenide", new AllureSelenide());
-        Configuration.browser = BrowserstackMobileDriver.class.getName();
+        String env = System.getProperty("environment");
+
+        if (env.equals("browserstack"))
+            Configuration.browser = BrowserstackMobileDriver.class.getName();
+        else if (env.equals("emulator"))
+            Configuration.browser = EmulatorMobileDriver.class.getName();
+        else if (env.equals("local"))
+            Configuration.browser = LocalMobileDriver.class.getName();
+        else if (env.equals("selenoid"))
+            Configuration.browser = SelenoidMobileDriver.class.getName();
+
+
         Configuration.startMaximized = false;
         Configuration.browserSize = null;
-        Configuration.timeout = 10000;
+        Configuration.timeout = 100000;
 
     }
 
@@ -33,13 +48,10 @@ public class TestBaseBrowserStack {
     @AfterEach
     public void afterEach() {
         String sessionId = getSessionId();
-
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-//        Attach.browserConsoleLogs();
-        closeWebDriver();
-
         Attach.attachVideo(sessionId);
+        closeWebDriver();
     }
 
 }
